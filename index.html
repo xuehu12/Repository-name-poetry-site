@@ -20,20 +20,19 @@ body {
     color: #e8e6e3;
 }
 
-/* 🌧️ CSS雨 */
+/* 🌧️ 雨（纯CSS，不会失效） */
 .rain {
     position: fixed;
     width: 100%;
     height: 100%;
-    background: linear-gradient(
+    background: repeating-linear-gradient(
         to bottom,
-        rgba(255,255,255,0.08) 0%,
-        rgba(255,255,255,0.08) 2%,
-        transparent 2%,
-        transparent 100%
+        rgba(255,255,255,0.08) 0px,
+        rgba(255,255,255,0.08) 2px,
+        transparent 2px,
+        transparent 20px
     );
-    background-size: 2px 20px;
-    animation: rain 0.5s linear infinite;
+    animation: rain 0.4s linear infinite;
     z-index: 1;
     opacity: 0.25;
 }
