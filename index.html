@@ -4,30 +4,43 @@
 <head>
 <meta charset="UTF-8">
 <title>雨中词页</title>
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Songti SC", "SimSun", serif;
-    }
 
-```
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Songti SC", "SimSun", serif;
+}
+
 body {
     height: 100vh;
     overflow: hidden;
-    background: #0a0a0a;
+    background: #0b0b0b;
     color: #e8e6e3;
 }
 
-/* 🌧️ 雨背景 */
+/* 🌧️ CSS雨 */
 .rain {
     position: fixed;
     width: 100%;
     height: 100%;
-    background: url('https://i.imgur.com/7b1XK5F.gif') repeat;
-    opacity: 0.15;
+    background: linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.08) 0%,
+        rgba(255,255,255,0.08) 2%,
+        transparent 2%,
+        transparent 100%
+    );
+    background-size: 2px 20px;
+    animation: rain 0.5s linear infinite;
     z-index: 1;
+    opacity: 0.25;
+}
+
+@keyframes rain {
+    from { background-position: 0 0; }
+    to { background-position: 0 20px; }
 }
 
 /* 🌫️ 暗层 */
@@ -35,36 +48,23 @@ body {
     position: fixed;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at center, rgba(0,0,0,0.3), #000 90%);
+    background: radial-gradient(circle at center, rgba(0,0,0,0.2), #000 90%);
     z-index: 2;
 }
 
-/* 📜 左侧诗词 */
+/* 📜 诗词 */
 .poem {
     position: relative;
     z-index: 3;
     width: 40%;
     padding: 80px 60px;
-    line-height: 2;
+    line-height: 2.2;
     font-size: 20px;
     letter-spacing: 2px;
     white-space: pre-line;
 }
-
-/* 🌙 微光效果 */
-.poem::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 2px;
-    height: 100%;
-    background: linear-gradient(to bottom, transparent, #aaa, transparent);
-    opacity: 0.3;
-}
-```
-
 </style>
+
 </head>
 
 <body>
