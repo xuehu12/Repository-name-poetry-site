@@ -3,7 +3,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<title>雨中词页</title>
+<title>灯下词</title>
 
 <style>
 * {
@@ -16,29 +16,29 @@
 body {
     height: 100vh;
     overflow: hidden;
-    background: #080808;
-    color: #e8e6e3;
+    background: #050505;
+    color: #eae7e2;
 }
 
-/* 🌧️ 第一层雨（远） */
-.rain1 {
+/* 🌧️ 雨（远） */
+.rain-back {
     position: fixed;
     width: 100%;
     height: 100%;
     background: repeating-linear-gradient(
         -20deg,
-        rgba(255,255,255,0.15) 0px,
-        rgba(255,255,255,0.15) 2px,
+        rgba(255,255,255,0.12) 0px,
+        rgba(255,255,255,0.12) 2px,
         transparent 2px,
-        transparent 25px
+        transparent 28px
     );
-    animation: rain1 0.6s linear infinite;
+    animation: rainBack 0.7s linear infinite;
+    opacity: 0.25;
     z-index: 1;
-    opacity: 0.3;
 }
 
-/* 🌧️ 第二层雨（近） */
-.rain2 {
+/* 🌧️ 雨（近） */
+.rain-front {
     position: fixed;
     width: 100%;
     height: 100%;
@@ -47,42 +47,80 @@ body {
         rgba(255,255,255,0.25) 0px,
         rgba(255,255,255,0.25) 3px,
         transparent 3px,
-        transparent 15px
+        transparent 18px
     );
-    animation: rain2 0.3s linear infinite;
-    z-index: 2;
+    animation: rainFront 0.35s linear infinite;
     opacity: 0.4;
+    z-index: 2;
 }
 
-@keyframes rain1 {
+@keyframes rainBack {
     from { background-position: 0 0; }
     to { background-position: -20px 40px; }
 }
 
-@keyframes rain2 {
+@keyframes rainFront {
     from { background-position: 0 0; }
     to { background-position: -40px 60px; }
 }
 
-/* 🌫️ 暗层 */
-.overlay {
+/* 🌫️ 呼吸感光影 */
+.breath {
     position: fixed;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at center, rgba(0,0,0,0.2), #000 90%);
+    background: radial-gradient(circle at center, rgba(255,255,255,0.05), transparent 70%);
+    animation: breath 6s ease-in-out infinite;
     z-index: 3;
 }
 
-/* 📜 诗词 */
+@keyframes breath {
+    0%,100% { opacity: 0.2; }
+    50% { opacity: 0.35; }
+}
+
+/* ⚡ 微弱闪光 */
+.flash {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+    opacity: 0;
+    z-index: 4;
+    animation: flash 12s infinite;
+}
+
+@keyframes flash {
+    0%, 97%, 100% { opacity: 0; }
+    98% { opacity: 0.08; }
+    99% { opacity: 0.02; }
+}
+
+/* 📜 诗词（慢慢出现） */
 .poem {
     position: relative;
-    z-index: 4;
-    width: 40%;
-    padding: 80px 60px;
-    line-height: 2.2;
-    font-size: 20px;
+    z-index: 5;
+    width: 42%;
+    padding: 90px 70px;
+    line-height: 2.3;
+    font-size: 21px;
     letter-spacing: 2px;
     white-space: pre-line;
+    opacity: 0;
+    animation: fadeIn 4s ease forwards;
+    animation-delay: 1s;
+}
+
+/* ✨ 淡入 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 </style>
 
@@ -90,9 +128,10 @@ body {
 
 <body>
 
-<div class="rain1"></div>
-<div class="rain2"></div>
-<div class="overlay"></div>
+<div class="rain-back"></div>
+<div class="rain-front"></div>
+<div class="breath"></div>
+<div class="flash"></div>
 
 <div class="poem">
 临江仙
