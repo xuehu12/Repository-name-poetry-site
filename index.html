@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>灯下词</title>
+
+<style>
+body{
+    margin:0;
+    font-family: "Songti SC", serif;
+    color:#fff;
+    background:#000;
+    overflow-x:hidden;
+}
+
+video{
+    position:fixed;
+    right:0;
+    bottom:0;
+    min-width:100%;
+    min-height:100%;
+    object-fit:cover;
+    z-index:-1;
+    opacity:0.5;
+}
+
+.container{
+    padding:80px 10%;
+}
+
+h1{
+    font-size:48px;
+    letter-spacing:6px;
+}
+
+.poem{
+    margin-top:40px;
+    line-height:2;
+    font-size:18px;
+    max-width:600px;
+}
+
+.timeline{
+    margin-top:100px;
+    border-left:1px solid rgba(255,255,255,0.3);
+    padding-left:30px;
+}
+
+.timeline-item{
+    margin-bottom:50px;
+}
+
+.timeline-item h3{
+    margin-bottom:10px;
+}
+
+.immersive-bar{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+}
+
+button{
+    padding:10px 15px;
+    background:rgba(0,0,0,0.6);
+    color:#fff;
+    border:1px solid rgba(255,255,255,0.3);
+    cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<!-- 背景视频 -->
+<video autoplay muted loop>
+<source src="https://www.w3schools.com/howto/rain.mp4" type="video/mp4">
+</video>
+
+<div class="container">
+
+<h1>灯下词</h1>
+
+<div class="poem">
+曾共西窗听夜雨，灯花落尽无声。<br>
+旧时眉月照孤城。<br>
+后来春色好，不似那时明。<br><br>
+
+几度看花花不语，几回临水波平。<br>
+人间何处遣深情。<br>
+半生都是梦，一梦伴卿行。
+</div>
+
+<!-- 时间轴 -->
+<div class="timeline">
+    <div class="timeline-item">
+        <h3>春江狂歌</h3>
+        <p>春江涨绿，万象流动。</p>
+    </div>
+
+    <div class="timeline-item">
+        <h3>关河令</h3>
+        <p>千年兴亡，一眼看尽。</p>
+    </div>
+
+    <div class="timeline-item">
+        <h3>蝶恋花</h3>
+        <p>细雨无声，人影难寻。</p>
+    </div>
+</div>
+
+</div>
+
+<!-- 控制 -->
+<div class="immersive-bar">
+<button onclick="toggleImmersive()">沉浸</button>
+</div>
+
+<script>
+function toggleImmersive(){
+    document.body.classList.toggle('immersive');
+}
+</script>
+
+</body>
+</html>
